@@ -512,6 +512,76 @@ button:hover {
   }
 }
 
+  /* Página de participantes */
+.participants-page {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at 10% 15%, #ffe2ed 0 45px, transparent 47px),
+    radial-gradient(circle at 90% 85%, #e8e4ff 0 65px, transparent 67px),
+    #fffefe;
+}
+
+.participants-page h2 {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+.participants-subtitle {
+  color: #a18da9;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.participants-decoration {
+  width: 65px;
+  height: 6px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #7772d8 50%, #ed83a8 50%);
+  margin: 15px auto 25px;
+}
+
+.participants-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.participant-card {
+  background: #fff5fa;
+  border: 1px solid #f5dce9;
+  border-radius: 14px;
+  padding: 14px 10px;
+  color: #7772a2;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 4px 12px #7772d810;
+}
+
+.participant-card:nth-child(even) {
+  background: #f3f0ff;
+  border-color: #e5dfff;
+}
+
+@media (max-width: 600px) {
+  .participants-page h2 {
+    font-size: 27px;
+  }
+
+  .participants-list {
+    gap: 9px;
+  }
+
+  .participant-card {
+    font-size: 10px;
+    padding: 12px 6px;
+  }
+}
+
 </style>
 </head>
 
@@ -894,6 +964,37 @@ addPage(`
   <div class="flag"><span class="left"></span><span class="right"></span></div>
   <p class="cover-small" style="text-align:center">República Dominicana</p>
 `);
+
+  addPage(`
+  <div class="eyebrow">Nuestro equipo</div>
+
+  <h2>Participantes</h2>
+
+  <p class="participants-subtitle">
+    Los integrantes de nuestra clase
+  </p>
+
+  <div class="participants-decoration"></div>
+
+  <div class="participants-list">
+    <div class="participant-card"Noelia Taveras - A00113311</div>
+    <div class="participant-card"Daniel Valdes Rodriguez - A0011007</div>
+    <div class="participant-card">Miguel Sebastian Hungría - A00115552</div>
+    <div class="participant-card">Bladimir Romero - A0096596</div>
+    <div class="participant-card">Michael Crisostomo - A00112757</div>
+    <div class="participant-card"Yeferson Rubio - A00113159</div>
+    <div class="participant-card">Carlos Mejia - A00113159</div>
+    <div class="participant-card">Nombre del participante 8</div>
+  </div>
+
+  <div class="participants-decoration"></div>
+
+  <p class="participants-subtitle">
+    República Dominicana · 2026
+  </p>
+
+  ${pageNumber(leaders.length+5)}
+`, "participants-page");
 
 pageFlip = new St.PageFlip(book, {
   width: 480,
