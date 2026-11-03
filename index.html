@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Líderes de la República Dominicana</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+
+<style>
+:root {
+  --cream: #f8f3e9;
+  --paper: #fffdf7;
+  --blue: #355c7d;
+  --red: #b85c60;
+  --gold: #c6a56b;
+  --ink: #34332f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg,#e9e4dc,#d5d9d8);
+  font-family: 'Montserrat', sans-serif;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 12px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(23px,4vw,36px);
+  color: var(--blue);
+  margin: 0 0 7px;
+}
+
+header p {
+  color: #68645e;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.flag {
+  display: flex;
+  width: 65px;
+  height: 39px;
+  margin: 12px auto;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px #0002;
+}
+
+.flag span {
+  width: 50%;
+  height: 100%;
+}
+
+.flag .left {
+  background: linear-gradient(to bottom,#002d62 0 50%,#fff 50% 100%);
+}
+
+.flag .right {
+  background: linear-gradient(to bottom,#ce1126 0 50%,#fff 50% 100%);
+}
+
+.book-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#book {
+  margin: auto;
+}
+
+.page {
+  background: var(--paper);
+  padding: 35px 38px 30px;
+  overflow: hidden;
+  border: 1px solid #e8dfd0;
+}
+
+.page-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.page-number {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #e8dfd0;
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #9b9181;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.page-number::after {
+  content: "";
+  width: 35px;
+  height: 8px;
+  background: linear-gradient(90deg,#355c7d 50%,#b85c60 50%);
+  opacity: .65;
+}
+
+.eyebrow {
+  color: var(--red);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 9px;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--blue);
+  font-size: 27px;
+  line-height: 1.15;
+  margin: 0 0 9px;
+}
+
+.subtitle {
+  color: #82786c;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 17px;
+}
+
+.cover {
+  background:
+    radial-gradient(circle at center,#ffffff 0,#f8f1e5 70%);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border: 8px double #d5bd91;
+  padding: 35px;
+}
+
+.cover h2 {
+  font-size: 39px;
+  line-height: 1.2;
+  margin: 20px 0;
+}
+
+.cover .subtitle {
+  max-width: 260px;
+  line-height: 1.8;
+}
+
+.cover-decoration {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg,var(--blue) 50%,var(--red) 50%);
+  margin: 15px auto;
+}
+
+.cover-small {
+  font-size: 10px;
+  color: #817665;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.bio-layout {
+  display: grid;
+  grid-template-columns: 34% 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.portrait {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  object-position: center top;
+  border: 5px solid white;
+  box-shadow: 0 3px 13px #0002;
+  background: #eee6d9;
+}
+
+.portrait-caption {
+  font-size: 9px;
+  color: #8b8173;
+  text-align: center;
+  margin-top: 7px;
+  line-height: 1.5;
+}
+
+.bio-copy {
+  min-width: 0;
+}
+
+.bio-copy h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--red);
+  font-size: 14px;
+  margin: 0 0 5px;
+}
+
+.bio-copy p {
+  font-family: 'Playfair Display', serif;
+  font-size: 11.5px;
+  line-height: 1.55;
+  text-align: justify;
+  color: #48443e;
+  margin: 0 0 10px;
+}
+
+.bio-copy .highlight {
+  background: #f4eee3;
+  border-left: 3px solid var(--gold);
+  padding: 9px 11px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 11px;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.divider-page {
+  background: linear-gradient(145deg,#f7f0e4,#e9edf0);
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.divider-page h2 {
+  font-size: 34px;
+}
+
+.divider-page p {
+  max-width: 270px;
+  font-family: 'Playfair Display', serif;
+  line-height: 1.8;
+  color: #716b61;
+  font-size: 14px;
+}
+
+.intro-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  line-height: 1.9;
+  text-align: justify;
+  color: #514c44;
+}
+
+.control-panel {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 22px;
+}
+
+button {
+  border: none;
+  background: var(--blue);
+  color: white;
+  padding: 11px 19px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  transition: .2s;
+}
+
+button:hover {
+  background: var(--red);
+  transform: translateY(-2px);
+}
+
+#page-indicator {
+  color: #625e57;
+  font-size: 11px;
+  min-width: 85px;
+  text-align: center;
+}
+
+@media(max-width:600px) {
+  body { padding: 15px 4px; }
+  .page { padding: 25px 20px 30px; }
+  .bio-layout { grid-template-columns: 1fr; gap: 12px; }
+  .portrait {
+    width: 145px;
+    height: 170px;
+    display: block;
+    margin: auto;
+  }
+  .bio-copy p { font-size: 11px; }
+  .cover h2 { font-size: 29px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Historia y liderazgo dominicano</h1>
+  <div class="flag"><span class="left"></span><span class="right"></span></div>
+  <p>Un recorrido por nuestra historia</p>
+</header>
+
+<div class="book-area">
+  <div id="book"></div>
+</div>
+
+<div class="control-panel">
+  <button onclick="previousPage()">← Anterior</button>
+  <span id="page-indicator">Página 1</span>
+  <button onclick="nextPage()">Siguiente →</button>
+</div>
+
+<script>
+const leaders = [
+{
+name:"Juan Pablo Duarte",
+years:"1813 – 1876",
+role:"Padre de la Patria",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Juan_Pablo_Duarte.jpg",
+life:"Juan Pablo Duarte nació en Santo Domingo el 26 de enero de 1813. Fue un político, intelectual y pensador dominicano. Desde joven mostró interés por la libertad, la justicia y la construcción de una sociedad organizada sobre principios republicanos. Sus viajes y estudios en el extranjero ampliaron su visión política y le permitieron conocer ideas liberales que influyeron en su pensamiento.",
+trajectory:"En 1838 fundó La Trinitaria, una sociedad secreta que tenía como objetivo organizar la separación del territorio dominicano del dominio haitiano. Sus integrantes trabajaban de manera discreta para difundir el ideal independentista y preparar a la población. Duarte también promovió actividades culturales y políticas que ayudaron a fortalecer la identidad nacional.",
+"contributions":"Su principal aporte fue impulsar el proyecto de una República Dominicana libre, soberana e independiente. Defendía que el nuevo Estado debía organizarse mediante leyes y respetar la voluntad de sus ciudadanos. Su pensamiento fue fundamental para establecer los ideales que acompañaron la proclamación de independencia del 27 de febrero de 1844.",
+legacy:"Aunque pasó parte de su vida en el exilio y no estuvo presente durante la proclamación de la independencia, su proyecto político fue decisivo para el nacimiento de la República. Es recordado como uno de los Padres de la Patria y como símbolo de honestidad, patriotismo y compromiso con la soberanía nacional."
+},
+{
+name:"Francisco del Rosario Sánchez",
+years:"1817 – 1861",
+role:"Padre de la Patria",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Francisco_del_Rosario_Sanchez.jpg",
+life:"Francisco del Rosario Sánchez nació en Santo Domingo el 9 de marzo de 1817. Fue abogado, político y uno de los principales organizadores del movimiento independentista. Se integró a La Trinitaria y asumió responsabilidades importantes cuando Juan Pablo Duarte tuvo que abandonar el país debido a la persecución política.",
+trajectory:"El 27 de febrero de 1844 encabezó la proclamación de la independencia dominicana en la Puerta del Conde. Su participación fue fundamental para que el movimiento separatista pudiera concretar sus objetivos. Después de la independencia continuó participando en la vida política y militar del país.",
+"contributions":"Sánchez defendió la soberanía dominicana y se opuso firmemente a cualquier proyecto que pusiera en peligro la independencia. Cuando Pedro Santana promovió la anexión a España, Sánchez organizó acciones para combatirla y recuperar la autonomía nacional.",
+legacy:"Fue capturado y ejecutado en San Juan de la Maguana el 4 de julio de 1861. Su sacrificio lo convirtió en una figura fundamental de la historia nacional. Es recordado por su valentía, su liderazgo y su compromiso con la libertad."
+},
+{
+name:"Ramón Matías Mella",
+years:"1816 – 1864",
+role:"Padre de la Patria",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Ramon_Matias_Mella.jpg",
+life:"Ramón Matías Mella nació en Santo Domingo el 25 de febrero de 1816. Fue militar, político y uno de los principales colaboradores del movimiento independentista. Desde joven participó en actividades políticas y se relacionó con los grupos que buscaban la separación del dominio haitiano.",
+trajectory:"Formó parte de La Trinitaria y colaboró en los preparativos de la independencia. La tradición histórica relaciona su nombre con el trabucazo de la noche del 27 de febrero de 1844, acontecimiento que contribuyó a impulsar la proclamación de la República.",
+"contributions":"Después de la independencia participó en acciones militares y en la defensa del nuevo Estado. También apoyó la causa restauradora durante la lucha contra la anexión española, demostrando nuevamente su compromiso con la soberanía dominicana.",
+legacy:"Murió en 1864, durante la Guerra de la Restauración. Su figura representa la decisión, el valor y la disposición de actuar para defender la libertad. Junto a Duarte y Sánchez, es reconocido como Padre de la Patria."
+},
+{
+name:"Gregorio Luperón",
+years:"1839 – 1897",
+role:"Líder de la Restauración",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Gregorio_Luperon.jpg",
+life:"Gregorio Luperón nació en Puerto Plata el 8 de septiembre de 1839. Tuvo una infancia humilde y desarrolló desde joven una trayectoria vinculada al trabajo y a la vida pública. Con el tiempo se convirtió en uno de los principales líderes militares y políticos del siglo XIX dominicano.",
+trajectory:"Se opuso a la anexión de la República Dominicana a España en 1861 y participó activamente en la Guerra de la Restauración. Su capacidad de organización y liderazgo contribuyó a fortalecer las fuerzas que buscaban recuperar la independencia nacional.",
+"contributions":"Después de la Restauración participó en la política y defendió ideas liberales. En 1879 encabezó un gobierno provisional que impulsó medidas de organización institucional y respeto al orden constitucional.",
+legacy:"Luperón es recordado por su defensa de la soberanía y su oposición al autoritarismo. Su trayectoria militar y política lo convirtió en una de las figuras más destacadas de la historia dominicana del siglo XIX."
+},
+{
+name:"Ulises Heureaux",
+years:"1845 – 1899",
+role:"Presidente de la República",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Ulises_Heureaux.jpg",
+life:"Ulises Heureaux, conocido como Lilís, nació en Puerto Plata en 1845. Participó en la Guerra de la Restauración y, con el tiempo, ganó influencia dentro de los grupos políticos que disputaban el poder durante la segunda mitad del siglo XIX.",
+trajectory:"Llegó a la Presidencia y consolidó un sistema de gobierno altamente centralizado. Su administración promovió proyectos de infraestructura y modernización, pero también recurrió a la vigilancia, la persecución de opositores y el control de las instituciones.",
+"contributions":"Durante su gobierno se desarrollaron obras y proyectos que buscaban conectar distintas zonas del país. Sin embargo, gran parte de la modernización estuvo acompañada de préstamos y compromisos financieros que aumentaron la deuda nacional.",
+legacy:"El endeudamiento y las tensiones políticas debilitaron su régimen. Fue asesinado en Moca en 1899. Su gobierno es estudiado como un ejemplo de caudillismo y autoritarismo en la historia dominicana."
+},
+{
+name:"Rafael Leónidas Trujillo",
+years:"1891 – 1961",
+role:"Dictador dominicano",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Rafael_Trujillo.jpg",
+life:"Rafael Leónidas Trujillo nació en San Cristóbal el 24 de octubre de 1891. Ingresó a la Guardia Nacional durante la ocupación estadounidense y ascendió dentro de la estructura militar. En 1930 llegó al poder e inició una dictadura que se prolongó durante más de tres décadas.",
+trajectory:"Su régimen concentró el poder político, económico y militar. El Estado controló los medios de comunicación y las organizaciones públicas. Los opositores fueron vigilados, encarcelados, torturados y asesinados. Entre los crímenes más conocidos se encuentran la masacre de haitianos de 1937 y el asesinato de las hermanas Mirabal en 1960.",
+"contributions":"Durante la dictadura se construyeron carreteras, edificios públicos y otras obras de infraestructura. También se impulsaron proyectos económicos y urbanos. Sin embargo, estas obras se desarrollaron dentro de un sistema represivo que eliminó libertades y utilizó los recursos del Estado para fortalecer el poder personal del dictador.",
+legacy:"Trujillo fue ajusticiado el 30 de mayo de 1961. Su dictadura dejó consecuencias profundas en la sociedad dominicana. Su período es estudiado como una etapa de represión política, culto a la personalidad y violación sistemática de los derechos humanos."
+},
+{
+name:"Juan Bosch",
+years:"1909 – 2001",
+role:"Escritor y expresidente",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Juan_Bosch.jpg",
+life:"Juan Bosch nació en La Vega el 30 de junio de 1909. Fue escritor, cuentista, ensayista, educador y político. Su obra literaria abordó la vida campesina, la desigualdad y las condiciones sociales de los sectores populares. Durante la dictadura de Trujillo vivió largos años en el exilio.",
+trajectory:"En 1939 participó en la fundación del Partido Revolucionario Dominicano. Regresó al país tras la caída de la dictadura y ganó las elecciones de 1962. Asumió la Presidencia en febrero de 1963, convirtiéndose en el primer presidente elegido democráticamente después del régimen trujillista.",
+"contributions":"Durante su gobierno promovió una Constitución de orientación democrática, así como reformas sociales y civiles. Defendió la educación, la libertad de expresión, los derechos laborales y el fortalecimiento de las instituciones democráticas.",
+legacy:"Su gobierno fue derrocado por un golpe de Estado en septiembre de 1963. Más adelante fundó el Partido de la Liberación Dominicana. Su pensamiento político y sus escritos continúan siendo estudiados como parte esencial de la historia democrática y cultural del país."
+},
+{
+name:"Joaquín Balaguer",
+years:"1906 – 2002",
+role:"Escritor y expresidente",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Joaquin_Balaguer.jpg",
+life:"Joaquín Balaguer nació en Navarrete el 1 de septiembre de 1906. Fue abogado, escritor y político. Ocupó diferentes cargos públicos durante la dictadura de Trujillo y llegó a la Presidencia en 1960. Posteriormente regresó al poder en distintos períodos.",
+trajectory:"Gobernó entre 1966 y 1978 y volvió a la Presidencia en 1986, permaneciendo en el cargo hasta 1996. Su larga trayectoria estuvo marcada por una gran influencia política y por una capacidad notable para mantenerse como figura central de la vida pública dominicana.",
+"contributions":"Durante sus gobiernos se construyeron carreteras, presas, edificios públicos y proyectos de infraestructura. También se desarrollaron programas de urbanización y obras que transformaron distintas zonas del país.",
+legacy:"Su figura continúa siendo objeto de debate. Sus gobiernos son recordados tanto por las obras públicas y su influencia política como por las denuncias de represión, violencia contra opositores y restricciones a las libertades democráticas."
+},
+{
+name:"José Francisco Peña Gómez",
+years:"1937 – 1998",
+role:"Dirigente político",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Jose_Francisco_Pena_Gomez.jpg",
+life:"José Francisco Peña Gómez nació en la provincia Valverde el 6 de marzo de 1937. Fue abogado, comunicador y dirigente político. Su historia personal estuvo marcada por la desigualdad y las barreras sociales de su época, experiencias que influyeron en su discurso sobre inclusión y participación.",
+trajectory:"Se convirtió en una de las principales figuras del Partido Revolucionario Dominicano. Fue alcalde del Distrito Nacional y candidato presidencial en varias ocasiones. Su capacidad de comunicación y movilización le permitió conectar con amplios sectores de la población.",
+"contributions":"Defendió la democracia representativa, la participación ciudadana y la integración social. Utilizó la comunicación política como herramienta para acercar los temas públicos a la población y promover la participación electoral.",
+legacy:"Aunque no llegó a la Presidencia, su influencia en la política dominicana fue significativa. Es recordado como uno de los dirigentes más importantes del sistema democrático contemporáneo."
+},
+{
+name:"Patria, Minerva y María Teresa Mirabal",
+years:"1924 – 1960",
+role:"Símbolos de resistencia",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Hermanas_Mirabal.jpg",
+life:"Patria, Minerva y María Teresa Mirabal fueron tres hermanas dominicanas que se convirtieron en símbolos de resistencia frente a la dictadura de Rafael Leónidas Trujillo. Minerva se destacó por su oposición política y por defender la libertad, mientras sus hermanas se integraron progresivamente a la lucha clandestina.",
+trajectory:"Junto a sus esposos y otros colaboradores participaron en el Movimiento Revolucionario 14 de Junio, que buscaba poner fin al régimen. La persecución contra la familia incluyó encarcelamientos, vigilancia y amenazas.",
+"contributions":"Su participación en la resistencia ayudó a mantener viva la oposición al régimen. Defendieron la libertad, la justicia y los derechos humanos en un contexto en el que expresar desacuerdo podía significar perder la vida.",
+legacy:"El 25 de noviembre de 1960, Patria, Minerva y María Teresa fueron asesinadas por agentes de la dictadura. Su muerte provocó indignación nacional e internacional. El 25 de noviembre fue reconocido posteriormente como Día Internacional de la Eliminación de la Violencia contra la Mujer."
+},
+{
+name:"Francisco Alberto Caamaño Deñó",
+years:"1932 – 1973",
+role:"Líder constitucionalista",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Francisco_Alberto_Caamano_Deno.jpg",
+life:"Francisco Alberto Caamaño Deñó nació en Santo Domingo el 11 de junio de 1932. Fue militar y alcanzó notoriedad durante la Revolución de Abril de 1965, cuando sectores militares y civiles se levantaron para exigir el retorno al orden constitucional interrumpido por el golpe de Estado contra Juan Bosch.",
+trajectory:"Como líder constitucionalista defendió el restablecimiento del gobierno elegido democráticamente. Durante el conflicto asumió la presidencia constitucional provisional y se convirtió en una de las figuras centrales de la resistencia frente a la intervención militar estadounidense.",
+"contributions":"Su liderazgo fue fundamental para organizar las fuerzas constitucionalistas durante la Revolución de Abril. Defendió la legitimidad del gobierno de Juan Bosch y la necesidad de respetar la Constitución y la voluntad popular.",
+legacy:"En 1973 encabezó una expedición armada que buscaba iniciar un movimiento contra el gobierno de Joaquín Balaguer. Fue capturado y ejecutado ese mismo año. Su figura ocupa un lugar importante en la memoria de la lucha constitucionalista."
+},
+{
+name:"Mamá Tingó",
+years:"1921 – 1974",
+role:"Líder campesina",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Mama_Tingo.jpg",
+life:"Florinda Soriano, conocida como Mamá Tingó, nació en Villa Mella el 8 de noviembre de 1921. Fue agricultora y dirigente campesina. Su vida estuvo ligada al trabajo de la tierra y a la organización comunitaria en defensa de las familias rurales.",
+trajectory:"Se convirtió en una voz destacada de los campesinos de Hato Viejo, en Yamasá, quienes reclamaban el derecho a permanecer en terrenos que trabajaban desde hacía años. Denunció los desalojos y participó en acciones de organización para defender a los agricultores.",
+"contributions":"Su liderazgo permitió visibilizar los problemas de los campesinos y la importancia del acceso a la tierra. Defendió a las familias rurales frente a los desalojos y reclamó condiciones más justas para quienes dependían de la agricultura.",
+legacy:"Fue asesinada el 1 de noviembre de 1974, en medio del conflicto por las tierras. Su historia se convirtió en símbolo de la lucha campesina, la justicia social y la defensa de los derechos de las mujeres rurales."
+},
+{
+name:"Eugenio María de Hostos",
+years:"1839 – 1903",
+role:"Educador y pensador",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Eugenio_Maria_de_Hostos.jpg",
+life:"Eugenio María de Hostos nació en Mayagüez, Puerto Rico, el 11 de enero de 1839. Fue educador, filósofo, escritor y defensor de la independencia antillana. Aunque no nació en territorio dominicano, desarrolló una parte importante de su labor intelectual y educativa en la República Dominicana.",
+trajectory:"Durante su estancia en el país impulsó la reforma de la enseñanza y la formación de maestros. Defendió una educación racional, científica y accesible, y promovió la preparación profesional de las mujeres.",
+"contributions":"Su trabajo contribuyó a transformar la manera de pensar la escuela y la función social del docente. Promovió métodos educativos que daban importancia a la observación, el razonamiento y el conocimiento científico.",
+legacy:"Murió en Santo Domingo en 1903. Su influencia se extendió a varias generaciones de educadores. Se le recuerda como una figura esencial de la historia educativa dominicana y del pensamiento liberal del Caribe."
+},
+{
+name:"Luis Abinader",
+years:"1967 – actualidad",
+role:"Presidente de la República",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Luis_Abinader_2024.jpg",
+life:"Luis Rodolfo Abinader Corona nació en Santo Domingo el 12 de julio de 1967. Es economista y empresario, y pertenece al Partido Revolucionario Moderno. Antes de llegar a la Presidencia participó en la actividad política y fue candidato presidencial en 2016 y 2020.",
+trajectory:"Ganó las elecciones de 2020 y asumió la Presidencia el 16 de agosto de ese año. En 2024 obtuvo la reelección para el período 2024–2028. Su primer mandato estuvo marcado por la gestión de la pandemia de COVID-19 y la recuperación económica.",
+"contributions":"Su administración ha impulsado proyectos relacionados con infraestructura, turismo, inversión, seguridad, transparencia y reformas institucionales. También ha promovido iniciativas de digitalización de servicios y modernización de la administración pública.",
+legacy:"Como figura contemporánea, su gestión puede analizarse a través de sus políticas públicas, resultados y debates nacionales. Su trayectoria forma parte de la historia política dominicana actual."
+},
+{
+name:"Raquel Peña",
+years:"1966 – actualidad",
+role:"Vicepresidenta de la República",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Raquel_Pena.jpg",
+life:"Raquel Peña nació en Santiago de los Caballeros el 10 de septiembre de 1966. Es académica y administradora de empresas. Antes de asumir la Vicepresidencia desarrolló una carrera vinculada a la educación superior y a la gestión universitaria.",
+trajectory:"Fue elegida vicepresidenta junto a Luis Abinader en 2020 y reelegida en 2024. Durante su gestión ha participado en tareas de coordinación del Poder Ejecutivo y en iniciativas relacionadas con educación, salud y desarrollo social.",
+"contributions":"Su experiencia académica y administrativa ha sido incorporada a diferentes tareas de gestión pública. Como vicepresidenta, acompaña al presidente y asume las responsabilidades que le son asignadas dentro del Poder Ejecutivo.",
+legacy:"Su trayectoria refleja la participación de profesionales del ámbito académico y empresarial en la administración pública y el papel de la mujer en los más altos niveles de representación del Estado."
+},
+{
+name:"José Ignacio Paliza",
+years:"1981 – actualidad",
+role:"Dirigente político",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Jose_Ignacio_Paliza.jpg",
+life:"José Ignacio Paliza nació en Puerto Plata el 1 de septiembre de 1981. Es abogado y dirigente político. Su carrera pública comenzó en el ámbito legislativo y se desarrolló dentro de las estructuras del Partido Revolucionario Moderno.",
+trajectory:"Fue senador por Puerto Plata y posteriormente asumió responsabilidades de dirección partidaria. También ha ocupado funciones en el Gobierno, entre ellas responsabilidades de coordinación política y administrativa.",
+"contributions":"Su trabajo se ha relacionado con la organización de partidos, la representación legislativa y la gestión pública. Ha participado en procesos de coordinación entre el partido de gobierno y las instituciones del Estado.",
+legacy:"Su trayectoria muestra el recorrido de un dirigente que ha ocupado funciones legislativas, partidarias y ejecutivas. Su papel forma parte de la política dominicana contemporánea."
+},
+{
+name:"Leonel Fernández",
+years:"1953 – actualidad",
+role:"Expresidente de la República",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Leonel_Fernandez.jpg",
+life:"Leonel Fernández nació en Santo Domingo el 26 de diciembre de 1953. Es abogado, académico y político. Desarrolló una trayectoria pública vinculada al Partido de la Liberación Dominicana y a la actividad universitaria.",
+trajectory:"Fue presidente de la República en tres períodos: 1996–2000, 2004–2008 y 2008–2012. Durante sus gobiernos se promovieron proyectos de modernización tecnológica, infraestructura y apertura económica.",
+"contributions":"Sus administraciones impulsaron la expansión de las telecomunicaciones, el desarrollo de obras públicas y proyectos de incorporación de tecnología en la educación y los servicios estatales. También se debatieron temas de desigualdad, endeudamiento y gestión pública.",
+legacy:"En 2019 fundó la Fuerza del Pueblo, organización desde la que continuó su actividad política. Su trayectoria permite estudiar la evolución de los partidos dominicanos y la modernización del Estado."
+},
+{
+name:"Danilo Medina",
+years:"1951 – actualidad",
+role:"Expresidente de la República",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Danilo_Medina.jpg",
+life:"Danilo Medina nació en Arroyo Cano, provincia San Juan, el 10 de noviembre de 1951. Es economista y político. Desarrolló su carrera dentro del Partido de la Liberación Dominicana y ocupó distintos cargos legislativos y ejecutivos antes de llegar a la Presidencia.",
+trajectory:"Fue presidente de la República durante dos períodos consecutivos, de 2012 a 2020. Sus gobiernos impulsaron programas de educación, construcción de escuelas, atención primaria y apoyo a pequeños productores.",
+"contributions":"Entre las iniciativas más conocidas de sus administraciones se encuentran la ampliación de la jornada escolar, la construcción de centros educativos y programas de apoyo a la producción agropecuaria. También se debatieron temas de endeudamiento, transparencia y corrupción.",
+legacy:"Después de dejar la Presidencia mantuvo presencia en la vida partidaria y asumió la dirección del PLD. Su trayectoria es relevante para analizar las políticas sociales y los desafíos de la rendición de cuentas."
+},
+{
+name:"Abel Martínez",
+years:"1972 – actualidad",
+role:"Político y exalcalde",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Abel_Martinez_Duran.jpg",
+life:"Abel Martínez nació en Santiago de los Caballeros el 21 de abril de 1972. Es abogado y político. Su carrera pública incluye funciones legislativas y municipales, además de responsabilidades dentro del Partido de la Liberación Dominicana.",
+trajectory:"Fue diputado y presidente de la Cámara de Diputados. Posteriormente ganó la alcaldía de Santiago de los Caballeros, desde donde dirigió proyectos municipales relacionados con limpieza, ordenamiento urbano y servicios de la ciudad.",
+"contributions":"Su trabajo municipal se concentró en la organización de espacios públicos y en la prestación de servicios urbanos. En 2023 fue escogido candidato presidencial del PLD para las elecciones de 2024.",
+legacy:"Su recorrido muestra el paso por distintos niveles de representación: Congreso, gobierno municipal y competencia presidencial. Su figura forma parte del debate político sobre la gestión local."
+},
+{
+name:"Omar Fernández",
+years:"1991 – actualidad",
+role:"Senador del Distrito Nacional",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Omar_Fernandez_Dominican.jpg",
+life:"Omar Fernández nació en Santo Domingo el 5 de diciembre de 1991. Es abogado y político, y pertenece a la Fuerza del Pueblo. Antes de llegar al Senado fue diputado por el Distrito Nacional.",
+trajectory:"En las elecciones de 2024 obtuvo la senaduría del Distrito Nacional. Desde el Senado participa en discusiones sobre proyectos de ley, fiscalización y políticas públicas.",
+"contributions":"Su trabajo legislativo incluye debates sobre temas económicos, institucionales y relacionados con la juventud. Como senador, tiene la responsabilidad de representar a los ciudadanos de su demarcación y participar en la elaboración de leyes.",
+legacy:"Su trayectoria representa una generación más joven dentro de la política dominicana. Su desempeño puede valorarse por las iniciativas que presenta, su participación en comisiones y su trabajo de representación ciudadana."
+},
+{
+name:"Salomé Ureña",
+years:"1850 – 1897",
+role:"Poeta y educadora",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Salome_Urena.jpg",
+life:"Salomé Ureña nació en Santo Domingo el 21 de octubre de 1850. Fue poeta y educadora. Su obra literaria abordó el amor a la patria, la familia, la naturaleza y las aspiraciones de la sociedad dominicana.",
+trajectory:"En 1881 fundó el Instituto de Señoritas, una institución dedicada a la formación académica de mujeres. Esta iniciativa abrió oportunidades educativas y contribuyó a preparar maestras para el país.",
+"contributions":"Su trabajo educativo estuvo relacionado con las ideas pedagógicas de Eugenio María de Hostos. Promovió la formación intelectual de las mujeres en una época en la que sus oportunidades de educación formal eran limitadas.",
+legacy:"Murió en 1897, pero su legado permanece en la literatura y en la historia de la educación. Es recordada por demostrar que la enseñanza y la cultura podían ser herramientas de transformación social."
+},
+{
+name:"Pedro Mir",
+years:"1913 – 2000",
+role:"Poeta Nacional",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Pedro_Mir.jpg",
+life:"Pedro Mir nació en San Pedro de Macorís el 3 de junio de 1913. Fue poeta, narrador, ensayista y profesor. Su obra estuvo profundamente vinculada con la historia, la identidad y las condiciones sociales de la República Dominicana.",
+trajectory:"Su poema 'Hay un país en el mundo' se convirtió en una de las expresiones literarias más reconocidas sobre la realidad dominicana. Durante parte de su vida residió fuera del país, en un contexto marcado por la dictadura de Trujillo.",
+"contributions":"Su producción literaria abordó la desigualdad, la memoria colectiva, la identidad nacional y la relación entre cultura y sociedad. Su escritura contribuyó a que la poesía dominicana alcanzara reconocimiento dentro y fuera del país.",
+legacy:"Fue declarado Poeta Nacional en 1984. Su obra permanece como referencia de la literatura dominicana del siglo XX y como una invitación a reflexionar sobre la realidad social."
+},
+{
+name:"Juan Luis Guerra",
+years:"1957 – actualidad",
+role:"Músico y compositor",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Juan_Luis_Guerra.jpg",
+life:"Juan Luis Guerra nació en Santo Domingo el 7 de junio de 1957. Es músico, compositor, arreglista y productor. Estudió música y desarrolló un estilo que combina merengue, bachata, bolero, son y otros ritmos caribeños.",
+trajectory:"Alcanzó reconocimiento internacional con su agrupación 4.40 y con álbumes que llevaron la música dominicana a públicos de numerosos países. Sus canciones han recibido premios y reconocimientos internacionales.",
+"contributions":"Su trabajo ayudó a ampliar la presencia internacional del merengue y la bachata. Sus composiciones combinan ritmos dominicanos con letras románticas, reflexivas y sociales, y han influido en nuevas generaciones de artistas.",
+legacy:"Además de su carrera artística, ha participado en iniciativas solidarias y proyectos de ayuda social. Su liderazgo cultural se manifiesta en la proyección internacional de la música dominicana."
+},
+{
+name:"Marileidy Paulino",
+years:"1996 – actualidad",
+role:"Atleta olímpica",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Marileidy_Paulino.jpg",
+life:"Marileidy Paulino nació en Don Gregorio, provincia Peravia, el 25 de octubre de 1996. Es velocista especializada en los 400 metros. Su talento para la velocidad la llevó a incorporarse a programas de entrenamiento de alto rendimiento.",
+trajectory:"Representó a la República Dominicana en los Juegos Olímpicos de Tokio 2020, donde obtuvo medallas de plata en los relevos mixtos 4 × 400 metros y en los 400 metros femeninos. En París 2024 ganó la medalla de oro en los 400 metros.",
+"contributions":"Sus resultados han elevado la presencia de la República Dominicana en el atletismo internacional. Su preparación, disciplina y constancia la han convertido en una de las principales figuras del deporte nacional.",
+legacy:"Se convirtió en la primera mujer dominicana en ganar una medalla de oro olímpica individual. Su historia inspira a jóvenes atletas y demuestra la importancia de la perseverancia y el apoyo al deporte."
+},
+{
+name:"David Ortiz",
+years:"1975 – actualidad",
+role:"Figura del béisbol dominicano",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/David_Ortiz.jpg",
+life:"David Ortiz nació en Santo Domingo el 18 de noviembre de 1975. Es un exjugador profesional de béisbol conocido como Big Papi. Desarrolló su carrera en las Grandes Ligas, principalmente con los Boston Red Sox, equipo con el que se convirtió en una figura muy popular.",
+trajectory:"Fue reconocido por su poder ofensivo y por su desempeño en momentos decisivos de la postemporada. Ganó tres Series Mundiales con Boston y fue seleccionado para múltiples Juegos de Estrellas.",
+"contributions":"Su rendimiento ayudó a consolidar su reputación como uno de los bateadores dominicanos más reconocidos. Fuera del terreno de juego ha participado en iniciativas de apoyo a niños y familias, especialmente mediante programas relacionados con la salud infantil.",
+legacy:"En 2022 fue exaltado al Salón de la Fama del Béisbol de Cooperstown. Su trayectoria combina éxito deportivo, representación internacional y compromiso filantrópico."
+}
+];
+
+const book = document.getElementById("book");
+let pageFlip;
+
+function pageNumber(number) {
+  return `<div class="page-number"><span>HISTORIA DOMINICANA</span><span>${number}</span></div>`;
+}
+
+function addPage(content, className="") {
+  const page = document.createElement("div");
+  page.className = "page";
+  page.innerHTML = `<div class="page-content ${className}">${content}</div>`;
+  book.appendChild(page);
+}
+
+addPage(`
+  <div class="cover-small">Una mirada a nuestra historia</div>
+  <div class="flag"><span class="left"></span><span class="right"></span></div>
+  <div class="cover-decoration"></div>
+  <h2>Líderes de la<br>República Dominicana</h2>
+  <div class="cover-decoration"></div>
+  <p class="subtitle">Personajes que marcaron nuestra historia política, social, cultural y deportiva</p>
+  <p class="cover-small">Edición histórica</p>
+`, "cover");
+
+addPage(`
+  <div class="eyebrow">Presentación</div>
+  <h2>Conocer nuestro pasado para comprender el presente</h2>
+  <p class="intro-text">
+  La historia de la República Dominicana ha sido construida por personas que, desde diferentes espacios, han influido en el desarrollo del país. Algunos participaron en la lucha por la independencia y la defensa de la soberanía; otros transformaron la educación, la política, la cultura, el deporte y la vida social.
+  </p>
+  <p class="intro-text">
+  Este libro reúne perfiles de líderes dominicanos y figuras vinculadas a nuestra historia. Cada biografía presenta aspectos de su vida, trayectoria, aportes y legado, con el propósito de comprender el contexto en el que actuaron y la influencia que tuvieron en la sociedad.
+  </p>
+  <p class="intro-text">
+  El liderazgo no se expresa de una sola manera. Puede manifestarse mediante decisiones políticas, acciones de resistencia, enseñanza, creación artística, servicio público o representación deportiva. Por eso, las personas incluidas en estas páginas reflejan distintas formas de contribuir al país.
+  </p>
+  ${pageNumber(2)}
+`);
+
+addPage(`
+  <div class="eyebrow">Contenido</div>
+  <h2>Personajes incluidos</h2>
+  <p class="intro-text">
+  <b>Independencia y soberanía:</b> Juan Pablo Duarte, Francisco del Rosario Sánchez y Ramón Matías Mella.<br><br>
+  <b>Historia política:</b> Gregorio Luperón, Ulises Heureaux, Rafael Leónidas Trujillo, Juan Bosch, Joaquín Balaguer, José Francisco Peña Gómez, Francisco Alberto Caamaño, Luis Abinader, Raquel Peña, José Ignacio Paliza, Leonel Fernández, Danilo Medina, Abel Martínez y Omar Fernández.<br><br>
+  <b>Resistencia y derechos:</b> Hermanas Mirabal y Mamá Tingó.<br><br>
+  <b>Educación y cultura:</b> Eugenio María de Hostos, Salomé Ureña, Pedro Mir y Juan Luis Guerra.<br><br>
+  <b>Deporte:</b> Marileidy Paulino y David Ortiz.
+  </p>
+  ${pageNumber(3)}
+`);
+
+leaders.forEach((person, index) => {
+  addPage(`
+    <div class="eyebrow">Biografía ${String(index+1).padStart(2,"0")}</div>
+    <h2>${person.name}</h2>
+    <div class="subtitle">${person.years} · ${person.role}</div>
+    <div class="bio-layout">
+      <div>
+        <img class="portrait" src="${person.image}" alt="Retrato de ${person.name}"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="display:none; height:170px; background:#eee6d9; color:#355c7d; align-items:center; justify-content:center; font-family:'Playfair Display'; font-size:28px;">
+          ${person.name.split(" ").map(x=>x[0]).join("").slice(0,3)}
+        </div>
+        <div class="portrait-caption">${person.name}<br>${person.role}</div>
+      </div>
+      <div class="bio-copy">
+        <h3>Vida y formación</h3>
+        <p>${person.life}</p>
+        <h3>Trayectoria</h3>
+        <p>${person.trajectory}</p>
+        <h3>Aportes e influencia</h3>
+        <p>${person.contributions}</p>
+        <h3>Legado</h3>
+        <p>${person.legacy}</p>
+        <div class="highlight">Su historia forma parte de la memoria colectiva y permite conocer distintas expresiones del liderazgo dominicano.</div>
+      </div>
+    </div>
+    ${pageNumber(index+4)}
+  `);
+});
+
+addPage(`
+  <div class="eyebrow">Reflexión final</div>
+  <h2>El liderazgo como parte de nuestra identidad</h2>
+  <p class="intro-text">
+  Las figuras presentadas en este libro muestran que la historia dominicana ha sido construida mediante esfuerzos, decisiones y luchas muy diferentes. La independencia, la defensa de los derechos, la educación, la cultura y el deporte han sido espacios en los que distintas personas han dejado una huella.
+  </p>
+  <p class="intro-text">
+  Conocer sus trayectorias permite reconocer los avances alcanzados, pero también reflexionar sobre los conflictos, errores y desafíos que han marcado nuestra historia. No todos los personajes tuvieron el mismo impacto ni representan los mismos valores; estudiarlos con sentido crítico ayuda a comprender mejor el pasado.
+  </p>
+  <p class="intro-text">
+  El legado de un líder no debe medirse solamente por el poder que alcanzó, sino también por las consecuencias de sus decisiones y por la manera en que influyó en la vida de otras personas.
+  </p>
+  ${pageNumber(leaders.length+4)}
+`);
+
+addPage(`
+  <div class="eyebrow">Cierre</div>
+  <h2>La historia continúa</h2>
+  <div class="cover-decoration"></div>
+  <p class="intro-text" style="text-align:center">
+  Cada generación tiene la responsabilidad de conocer, cuidar y construir la historia de la República Dominicana.
+  </p>
+  <div class="flag"><span class="left"></span><span class="right"></span></div>
+  <p class="cover-small" style="text-align:center">República Dominicana</p>
+`);
+
+pageFlip = new St.PageFlip(book, {
+  width: 480,
+  height: 650,
+  size: "stretch",
+  minWidth: 280,
+  maxWidth: 650,
+  minHeight: 380,
+  maxHeight: 850,
+  maxShadowOpacity: 0.35,
+  showCover: true,
+  mobileScrollSupport: true,
+  flippingTime: 900,
+  usePortrait: true,
+  startPage: 0
+});
+
+pageFlip.loadFromHTML(document.querySelectorAll("#book .page"));
+
+function nextPage() {
+  pageFlip.flipNext();
+}
+
+function previousPage() {
+  pageFlip.flipPrev();
+}
+
+pageFlip.on("flip", (event) => {
+  document.getElementById("page-indicator").textContent =
+    `Página ${event.data + 1} de ${pageFlip.getPageCount()}`;
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "ArrowRight") nextPage();
+  if (event.key === "ArrowLeft") previousPage();
+});
+
+</script>
+</body>
+</html>
