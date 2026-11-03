@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -88,8 +87,7 @@ header p {
 }
 
 #book {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
   margin: auto;
 }
 
@@ -320,8 +318,9 @@ button:hover {
 
   .book-area {
     width: 100%;
-    height: min(78vh, 650px);
-    min-height: 420px;
+    height: 78vh;
+    height: 78dvh;
+    min-height: 0;
   }
 
   .page {
@@ -374,7 +373,6 @@ button:hover {
 <header>
   <h1>Liderazgo Dominicano.</h1>
   <div class="flag"><span class="left"></span><span class="right"></span></div>
-  
 </header>
 
 <div class="book-area">
@@ -763,16 +761,10 @@ pageFlip = new St.PageFlip(book, {
   flippingTime: 900,
   usePortrait: true,
   startPage: 0,
-  autoSize: false
+  autoSize: true
 });
 
 pageFlip.loadFromHTML(document.querySelectorAll("#book .page"));
-
-  const resizeObserver = new ResizeObserver(() => {
-  pageFlip.update();
-});
-
-resizeObserver.observe(document.querySelector(".book-area"));
 
 function nextPage() {
   pageFlip.flipNext();
