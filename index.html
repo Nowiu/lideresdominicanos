@@ -1,11 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Líderes de la República Dominicana</title>
-<link rel="icon" href="favicon.webp" type="image/webp">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -78,16 +77,12 @@ header p {
 
 .book-area {
   width: 100%;
-  max-width: 1000px;
-  height: 82vh;
-  height: 82dvh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #book {
-  max-width: 100%;
   margin: auto;
 }
 
@@ -303,67 +298,18 @@ button:hover {
   text-align: center;
 }
 
-@media (max-width: 600px) {
-  body {
-    padding: 15px 8px;
-  }
-
-  header {
-    margin-bottom: 12px;
-  }
-
-  header h1 {
-    font-size: 25px;
-  }
-
-  .book-area {
-    width: 100%;
-    height: 78vh;
-    height: 78dvh;
-    min-height: 0;
-  }
-
-  .page {
-    padding: 20px 16px 26px;
-  }
-
-  .bio-layout {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
+@media(max-width:600px) {
+  body { padding: 15px 4px; }
+  .page { padding: 25px 20px 30px; }
+  .bio-layout { grid-template-columns: 1fr; gap: 12px; }
   .portrait {
-    width: 120px;
-    height: 145px;
+    width: 145px;
+    height: 170px;
     display: block;
     margin: auto;
   }
-
-  .bio-copy p {
-    font-size: 10px;
-    line-height: 1.4;
-  }
-
-  .bio-copy h3 {
-    font-size: 12px;
-  }
-
-  .bio-copy .highlight {
-    font-size: 10px;
-  }
-
-  h2 {
-    font-size: 22px;
-  }
-
-  .cover h2 {
-    font-size: 29px;
-  }
-
-  .intro-text {
-    font-size: 12px;
-    line-height: 1.6;
-  }
+  .bio-copy p { font-size: 11px; }
+  .cover h2 { font-size: 29px; }
 }
 </style>
 </head>
@@ -371,8 +317,9 @@ button:hover {
 <body>
 
 <header>
-  <h1>Liderazgo Dominicano.</h1>
+  <h1>Historia y liderazgo dominicano</h1>
   <div class="flag"><span class="left"></span><span class="right"></span></div>
+  <p>Un recorrido por nuestra historia</p>
 </header>
 
 <div class="book-area">
@@ -380,9 +327,9 @@ button:hover {
 </div>
 
 <div class="control-panel">
-  <button onclick="previousPage()"></button>
+  <button onclick="previousPage()">← Anterior</button>
   <span id="page-indicator">Página 1</span>
-  <button onclick="nextPage()"></button>
+  <button onclick="nextPage()">Siguiente →</button>
 </div>
 
 <script>
@@ -401,7 +348,7 @@ legacy:"Aunque pasó parte de su vida en el exilio y no estuvo presente durante 
 name:"Francisco del Rosario Sánchez",
 years:"1817 – 1861",
 role:"Padre de la Patria",
-image:"FDRS.jpeg",
+image:"https://commons.wikimedia.org/wiki/Special:FilePath/Francisco_del_Rosario_Sanchez.jpg",
 life:"Francisco del Rosario Sánchez nació en Santo Domingo el 9 de marzo de 1817. Fue abogado, político y uno de los principales organizadores del movimiento independentista. Se integró a La Trinitaria y asumió responsabilidades importantes cuando Juan Pablo Duarte tuvo que abandonar el país debido a la persecución política.",
 trajectory:"El 27 de febrero de 1844 encabezó la proclamación de la independencia dominicana en la Puerta del Conde. Su participación fue fundamental para que el movimiento separatista pudiera concretar sus objetivos. Después de la independencia continuó participando en la vida política y militar del país.",
 "contributions":"Sánchez defendió la soberanía dominicana y se opuso firmemente a cualquier proyecto que pusiera en peligro la independencia. Cuando Pedro Santana promovió la anexión a España, Sánchez organizó acciones para combatirla y recuperar la autonomía nacional.",
@@ -751,17 +698,16 @@ pageFlip = new St.PageFlip(book, {
   width: 480,
   height: 650,
   size: "stretch",
-  minWidth: 200,
+  minWidth: 280,
   maxWidth: 650,
-  minHeight: 260,
+  minHeight: 380,
   maxHeight: 850,
   maxShadowOpacity: 0.35,
   showCover: true,
   mobileScrollSupport: true,
   flippingTime: 900,
   usePortrait: true,
-  startPage: 0,
-  autoSize: true
+  startPage: 0
 });
 
 pageFlip.loadFromHTML(document.querySelectorAll("#book .page"));
@@ -783,6 +729,11 @@ document.addEventListener("keydown", event => {
   if (event.key === "ArrowRight") nextPage();
   if (event.key === "ArrowLeft") previousPage();
 });
+
+</script>
+</body>
+</html>
+
 
 </script>
 </body>
