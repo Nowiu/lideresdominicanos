@@ -513,73 +513,34 @@ button:hover {
 }
 
   /* Página de participantes */
-.participants-page {
-  justify-content: center;
+..participants-page {
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
-  background:
-    radial-gradient(circle at 10% 15%, #ffe2ed 0 45px, transparent 47px),
-    radial-gradient(circle at 90% 85%, #e8e4ff 0 65px, transparent 67px),
-    #fffefe;
 }
 
 .participants-page h2 {
-  font-size: 34px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .participants-subtitle {
-  color: #a18da9;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 25px;
+  margin-bottom: 8px;
 }
 
 .participants-decoration {
-  width: 65px;
-  height: 6px;
-  border-radius: 20px;
-  background: linear-gradient(90deg, #7772d8 50%, #ed83a8 50%);
-  margin: 15px auto 25px;
+  margin: 5px auto 12px;
 }
 
 .participants-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
   width: 100%;
 }
 
 .participant-card {
-  background: #fff5fa;
-  border: 1px solid #f5dce9;
-  border-radius: 14px;
-  padding: 14px 10px;
-  color: #7772a2;
-  font-size: 12px;
-  font-weight: 800;
-  box-shadow: 0 4px 12px #7772d810;
-}
-
-.participant-card:nth-child(even) {
-  background: #f3f0ff;
-  border-color: #e5dfff;
-}
-
-@media (max-width: 600px) {
-  .participants-page h2 {
-    font-size: 27px;
-  }
-
-  .participants-list {
-    gap: 9px;
-  }
-
-  .participant-card {
-    font-size: 10px;
-    padding: 12px 6px;
-  }
+  padding: 12px 5px;
+  font-size: 10px;
 }
 
 </style>
