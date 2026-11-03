@@ -79,12 +79,17 @@ header p {
 
 .book-area {
   width: 100%;
+  max-width: 960px;
+  height: min(82vh, 850px);
+  min-height: 380px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #book {
+  width: 100%;
+  height: 100%;
   margin: auto;
 }
 
@@ -300,18 +305,66 @@ button:hover {
   text-align: center;
 }
 
-@media(max-width:600px) {
-  body { padding: 15px 4px; }
-  .page { padding: 25px 20px 30px; }
-  .bio-layout { grid-template-columns: 1fr; gap: 12px; }
+@media (max-width: 600px) {
+  body {
+    padding: 15px 8px;
+  }
+
+  header {
+    margin-bottom: 12px;
+  }
+
+  header h1 {
+    font-size: 25px;
+  }
+
+  .book-area {
+    width: 100%;
+    height: min(78vh, 650px);
+    min-height: 420px;
+  }
+
+  .page {
+    padding: 20px 16px 26px;
+  }
+
+  .bio-layout {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
   .portrait {
-    width: 145px;
-    height: 170px;
+    width: 120px;
+    height: 145px;
     display: block;
     margin: auto;
   }
-  .bio-copy p { font-size: 11px; }
-  .cover h2 { font-size: 29px; }
+
+  .bio-copy p {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  .bio-copy h3 {
+    font-size: 12px;
+  }
+
+  .bio-copy .highlight {
+    font-size: 10px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .cover h2 {
+    font-size: 29px;
+  }
+
+  .intro-text {
+    font-size: 12px;
+    line-height: 1.6;
+  }
 }
 </style>
 </head>
