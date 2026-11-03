@@ -79,9 +79,9 @@ header p {
 
 .book-area {
   width: 100%;
-  max-width: 960px;
-  height: min(82vh, 850px);
-  min-height: 380px;
+  max-width: 1000px;
+  height: 82vh;
+  height: 82dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -753,19 +753,26 @@ pageFlip = new St.PageFlip(book, {
   width: 480,
   height: 650,
   size: "stretch",
-  minWidth: 280,
+  minWidth: 200,
   maxWidth: 650,
-  minHeight: 380,
+  minHeight: 260,
   maxHeight: 850,
   maxShadowOpacity: 0.35,
   showCover: true,
   mobileScrollSupport: true,
   flippingTime: 900,
   usePortrait: true,
-  startPage: 0
+  startPage: 0,
+  autoSize: false
 });
 
 pageFlip.loadFromHTML(document.querySelectorAll("#book .page"));
+
+  const resizeObserver = new ResizeObserver(() => {
+  pageFlip.update();
+});
+
+resizeObserver.observe(document.querySelector(".book-area"));
 
 function nextPage() {
   pageFlip.flipNext();
