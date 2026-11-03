@@ -150,28 +150,36 @@ header p {
   display: flex;
   flex-direction: column;
   position: relative;
-
-  /* Permite visualizar todo el contenido */
   overflow-y: auto;
   overflow-x: hidden;
-  padding-bottom: 30px;
+  padding: 0 20px 10px 0;
   box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: #d8b9df transparent;
-  padding-right: 20px;
-  scrollbar-gutter: stable;
-  overscroll-behavior: contain;
-  touch-action: pan-y;
+  overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
-}
+  touch-action: pan-y;
 }
 
-/* Mantener las portadas sin desplazamiento */
 .page-content.cover,
 .page-content.divider-page {
   overflow: hidden;
+  padding-right: 0;
 }
 
+.page-content::-webkit-scrollbar {
+  width: 7px;
+}
+
+.page-content::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 8px 0;
+}
+
+.page-content::-webkit-scrollbar-thumb {
+  background: #d8b9df;
+  border-radius: 20px;
+}
 /* Evitar que las biografías se compriman */
 .bio-layout {
   flex-shrink: 0;
@@ -183,22 +191,28 @@ header p {
   overflow: visible;
 }
 
+  
 .bio-copy p {
   overflow-wrap: break-word;
 }
 .page-number {
-  position: absolute;
+  position: sticky;
   bottom: 0;
   left: 0;
-  right: 0;
-  border-top: 2px dashed #e9dff3;
+  width: 100%;
+  flex-shrink: 0;
+  margin-top: auto;
+  background: var(--paper);
+  border-top: 1px solid #e8dfd0;
   padding-top: 8px;
+  padding-bottom: 3px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #aaa0bd;
+  color: #9b9181;
   font-size: 9px;
   letter-spacing: 1px;
+  z-index: 2;
 }
 
 .page-number::after {
@@ -898,6 +912,24 @@ pageFlip = new St.PageFlip(book, {
 });
 
 pageFlip.loadFromHTML(document.querySelectorAll("#book .page"));
+  document.querySelectorAll(".page-content").forEach((content) => {
+  let startX = 0;
+  let startY = 0;
+
+  content.addEventListener("touchstart", (event) => {
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
+  }, { passive: true });
+
+  content.addEventListener("touchmove", (event) => {
+    const deltaX = Math.abs(event.touches[0].clientX - startX);
+    const deltaY = Math.abs(event.touches[0].clientY - startY);
+
+    if (deltaY > deltaX) {
+      event.stopPropagation();
+    }
+  }, { passive: true });
+});
 
 function nextPage() {
   pageFlip.flipNext();
